@@ -66,4 +66,3 @@
 	<!-- /.row -->
 </section>
 <!-- /.content -->
-</div>

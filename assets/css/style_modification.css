@@ -1,0 +1,48 @@
+/*
+	modification style is here
+*/
+.box {
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 1px 10px 10px rgba(0,0,0,0.1);
+}
+
+.main-header .navbar {
+    -webkit-transition: margin-left .3s ease-in-out;
+    -o-transition: margin-left .3s ease-in-out;
+    transition: margin-left .3s ease-in-out;
+    margin-bottom: 0;
+    margin-left: 230px;
+    border: none;
+    min-height: 50px;
+    border-radius: 0;
+    box-shadow: 2px 4px 8px 7px rgba(46,61,73,0.2);
+}
+
+.main-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 50px;
+    min-height: 100%;
+    width: 230px;
+    z-index: 810;
+    -webkit-transition: -webkit-transform .3s ease-in-out,width .3s ease-in-out;
+    -moz-transition: -moz-transform .3s ease-in-out,width .3s ease-in-out;
+    -o-transition: -o-transform .3s ease-in-out,width .3s ease-in-out;
+    transition: transform .3s ease-in-out,width .3s ease-in-out;
+    box-shadow: 2px 4px 8px 8px rgba(46,61,73,0.2);
+}
+
+.login-box-body, .register-box-body {
+    background: #fff;
+    padding: 20px;
+    height: 300px;
+    border-top: 0;
+    color: #666;
+    box-shadow: 2px 4px 8px 8px rgba(46,61,73,0.2);
+}

@@ -1,14 +1,40 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+/*
+ * @package	User model
+ * @author	Didi threeaone
+ * @link	it-underground.web.id
+ * @since
+ */
 class User_model extends CI_Model {
 
+	//init variable private 
+	private static $Instance = null;
+	/* get table menu*/	
 	protected $_table 	  = 'mst_user';
+	/*set alias*/
 	protected $_tbl_alias = 'mu';
+	/*get id primary key tbl menu*/
 	protected $_pk_id	  = 'UserId';
 
 	public function __construct() {
 		parent::__construct();
+	}
+
+	//debug all query()
+	// $this->output->enable_profiler(TRUE);
+
+	/*
+	* get instance 
+	* string
+	*/
+	public static function &Instance()
+	{
+	 
+	 	if( is_null(self::$Instance) ) {
+			self::$Instance = new self();
+	 	}
+	 	return self::$Instance;
 	}
 
 	/**
@@ -17,31 +43,30 @@ class User_model extends CI_Model {
 	* @param  $id @return ROW_ARRAY
 	* @author DIdi threeaone
 	*/
-	public function _get_all_data( $params = array())
+	public function get_all_data( $params = array())
 	{
 		if( isset($params['UserId']) ) {
 			$this->db->where($this->_tbl_alias.'.UserId', $params['UserId']);
 		}
 
-		if( isset($params['UserName']) ) {
-			$this->db->where($this->_tbl_alias.'.UserName', $params['UserName']);
-		}
-
-		if( isset($params['UserPassword']) ) {
-			$this->db->where($this->_tbl_alias.'.UserPassword', $params['UserPassword']);
-		}
-
-		$this->db->select($this->_tbl_alias.".*");
+		$this->db->select(
+			$this->_tbl_alias.".*, 
+			tur.*,
+			mup.menu_id,
+			IF(mu.UserIsState = 1,'Login','Logout') as State
+		");
 		$this->db->from($this->_table." ".$this->_tbl_alias);
+		$this->db->join("trs_user_role tur","tur.role_id = ".$this->_tbl_alias.".UserRoleId");
+		$this->db->join("mst_user_profile mup","mup.profile_id = ".$this->_tbl_alias.".UserProfileId");
 		$this->db->where($this->_tbl_alias.".UserIsActive",STATUS_ACTIVE);
 
-		$result = $this->db->get();
+		$this->_result = $this->db->get();
 
 		if( isset($params['UserId']) && $params['UserId'] != '' )
 		{
-			return $result->row_array();
+			return $this->_result->row_array();
 		} else {
-			return $result->result_array();
+			return $this->_result->result_array();
 		}
 	}
 

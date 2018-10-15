@@ -7,7 +7,7 @@
 		<div class="login-box-body">
 			<p class="login-box-msg">Sign in to start your session</p>
 			<form action="" method="post">
-				<div class="form-group has-feedback">
+				<div class="form-group has-feedback" style="margin-bottom: 30px; margin-top: 24px;">
 					<input type="text" name="username" class="form-control" placeholder="Email">
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>

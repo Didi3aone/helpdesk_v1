@@ -1,7 +1,7 @@
 <section class="content">
      <div class="row">
      	<div style="float: right; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;">
-        	<a href="<?= site_url('menu/create'); ?>" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+        	<a href="<?= site_url('user/create'); ?>" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
   		</div>
         <div class="col-xs-12">
           	<div class="box">
@@ -14,29 +14,31 @@
 	                <thead>
 		                <tr>
 		                  	<th>#</th>
-		                  	<th>Menu Name</th>
-		                  	<th>Menu Icon</th>
-		                  	<th>Menu Controller</th>
-		                  	<th>Menu Group</th>
+		                  	<th>Full Name</th>
+		                  	<th>Email</th>
+		                  	<th>Level</th>
+		                  	<th>Login Status</th>
+		                  	<th>Login Time</th>
+		                  	<th>Logout TIme</th>
+		                  	<th>User Menu ID</th>
 		                  	<th>Action</th>
 		                </tr>
 	                </thead>
 	                <tbody>
-	                	<?php 
-	                		if(!empty($datas)) :
-	                			foreach($datas as $key => $value) :
-	                	?>
-		                <tr>
-		                	<td><?= $value['menu_id']; ?></td>
-		                  	<td><?= $value['menu_name']; ?></td>
-		                  	<td><?= $value['menu_icon']; ?></td>
-		                  	<td><?= $value['menu_controller_name'] ?></td>
-		                  	<td><?= $value['menu_group_name']; ?></td>
-		                  	<td>X</td>
-		                </tr>
 	                  	<?php 
-		                  		endforeach;
-		                  	endif;
+	                  		$no = 1;
+							foreach( $datas as $key => $val ) : ?>
+								<td><?= $no++; ?></td>
+								<td><?= $val['UserFullName']; ?></td>
+								<td><?= $val['UserEmail']; ?></td>
+								<td><?= $val['role_name']; ?></td>
+								<td><?= $val['State']; ?></td>
+								<td><?= $val['UserLoginTime']; ?></td>
+								<td><?= $val['UserLogoutTime']; ?></td>
+								<td><?= $val['menu_id']; ?></td>
+								<td></td>
+							<?php 
+							endforeach;
 	                  	?>
 	                </tfoot>
 	              </table>

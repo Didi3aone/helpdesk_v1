@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?= (isset($title)) ? $title."|| CMS" : "|| CMS"; ?></title>
+  <title><?= (isset($title)) ? $title." || CMS V.1.0" : " || CMS V.1.0"; ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -17,31 +17,24 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?= base_url(); ?>assets/css/skins/_all-skins.min.css">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href="<?= base_url(); ?>assets/plugin/morris.js/morris.css">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="<?= base_url(); ?>assets/plugin/jvectormap/jquery-jvectormap.css">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="<?= base_url(); ?>assets/plugin/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="<?= base_url(); ?>assets/plugin/bootstrap-daterangepicker/daterangepicker.css">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="<?= base_url(); ?>assets/plugin/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-  <!-- snipppet get plugins -->
-
-  <?php if(isset($plugin_css)) {
+  <link rel="stylesheet" href="<?= base_url(); ?>assets/css/style_modification.css">
+  <link rel="stylesheet" href="<?= base_url(); ?>assets/css/sweetalert.css">
+  
+  	<!-- snipppet get plugins -->
+  	<?php 
+  		if(isset($plugin_css)) {
   			foreach( $plugin_css as $key => $val ): ?>
   				<link rel="stylesheet" type="text/css" href="<?= base_url($val); ?>">
 			<?php
 			endforeach;
   		} 
-  ?>
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+  	?>
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -271,7 +264,7 @@
 			<ul class="dropdown-menu">
 				<!-- User image -->
 				<li class="user-header">
-					<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+					<img src="<?= base_url(); ?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
 					<p>
 						Alexander Pierce - Web Developer
@@ -347,34 +340,19 @@
 							<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
 						</ul>
 					</li>
-					<li class="active treeview">
-						<?php 
-							//load model
-							$this->load->model('menu/Menu_model');
-							//get session user level
-							$session_id = $this->session->userdata("LEVEL_ID");
-							//get menu
-							$master_menu = $this->Menu_model->get_menu_by_user($session_id);
-							//loop array
-							foreach($master_menu as $key => $val ): 
-								$url 		= $val['menu_controller_name'];
-								$menu_name 	= $val['menu_name'];
-								$group_name = $val['menu_group_name'];
-								$icon       = $val['menu_icon'];
-							?>
-							<a href="#">
-								<i class="fa <?= $icon; ?>"></i> <span><?= $group_name; ?></span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-left pull-right"></i>
-								</span>
-							</a>
-							<ul class="treeview-menu">
-								<li class=""><a href="<?= site_url($url); ?>" title=""><i class="fa fa-circle-o"></i><?= $menu_name; ?></a></li>
-							</ul>
-							<?php
-							endforeach;
-						?>
+
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-bars"></i> <span>Manage System</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li class="active"><a href="<?= site_url('menu'); ?>"><i class="fa fa-circle-o"></i> Menu</a></li>
+						</ul>
 					</li>
+
 				</ul>
 			</section>
 			<!-- /.sidebar -->

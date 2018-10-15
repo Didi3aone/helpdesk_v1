@@ -15,6 +15,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url(); ?>assets/css/AdminLTE.min.css">
   <link rel="stylesheet" href="<?= base_url(); ?>assets/css/sweetalert.css">
+   <link rel="stylesheet" href="<?= base_url(); ?>assets/css/style_modification.css">
   <!-- iCheck -->
   <!-- <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css"> -->
 
