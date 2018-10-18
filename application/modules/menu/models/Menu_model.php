@@ -64,20 +64,20 @@ class Menu_model extends CI_Model {
 		$this->_get_menu = $this->_show_menu_by_user();
 
 		
-		//explode
-		$this->_get_menu = implode(",", $this->_get_menu);
-		$this->_get_menu = explode(",", $this->_get_menu);
-		print_r($this->_get_menu);exit;
+		// //explode
+		// $this->_get_menu = implode(",", $this->_get_menu);
+		// $this->_get_menu = explode(",", $this->_get_menu);
+		// // print_r($this->_get_menu);exit;
 
-		$this->_group_menu = $this->_get_menu['menu_group'];
+		// $this->_group_menu = $this->_get_menu['menu_group'];
 
-		$this->db->select($this->_alias.".*,mgm.*");
-		$this->db->from($this->_table." ".$this->_alias);
-		$this->db->join("mst_group_menu mgm","mgm.menu_group_id=".$this->_alias.".menu_group_id");
-		$this->db->where("(mm.menu_id IN (".$this->_get_menu.") AND mm.menu_group_id IN(".$this->_group_menu.") )");	
-		$this->_result = $this->db->get();
+		// $this->db->select($this->_alias.".*,mgm.*");
+		// $this->db->from($this->_table." ".$this->_alias);
+		// $this->db->join("mst_group_menu mgm","mgm.menu_group_id=".$this->_alias.".menu_group_id");
+		// $this->db->where("(mm.menu_id IN (".$this->_get_menu.") AND mm.menu_group_id IN(".$this->_group_menu.") )");	
+		// $this->_result = $this->db->get();
 
-		return $this->_result->result_array();
+		// return $this->_result->result_array();
 	}
 
 	/*
